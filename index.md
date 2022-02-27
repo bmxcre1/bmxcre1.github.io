@@ -1,1 +1,25 @@
-<!-- saved from url=(0781)./?__cf_chl_captcha_tk__=a7ce8115193e54f48a12024992eb71f460cab18f-1622432915-0-ASzfVnPDGQEjSwRxk4cWJOD85dPueeQgAPWq0_UyGYkGwPQqpvB0fVUWRo4aqMvT3wcXyz7xFFs24kXZrb-6W-Jf0o3oDbxGrVIhTVUK9vGm985L4f_vaWKgNSoPMOKEiOLghstxel9GenUK-N-GUmdEmtXEsBXsu29dnmVwwvqWGGk2D83QZwyk_pq_sSuvc2aQAzRXE6QYoCGyaWr8kYL33MpCARfY5-IVERf7ba5wQlIngpeyKzydCyguzUk5fIhtt37lhcIJnftf_DUA-dihy7JusfNwa_4-aoY9heTpUfhFCK6ZQ-LUqYJnIotOzCxrM38vGFLr_5Bv-6r5Sg6Th2sll2qAXsh4OlMsNOxjmGGIIsrTO2UxYOLCgoRQBpigEDDaN1_crxlscDHwGa1mhE1qfM7LAr07hbXYZsyUB_dufJaTdm8b7BHLZhoaIRjnmrTmALMolNE8x_f2lsaqUS-kUV7-fJJ0jmJJSn16BEOJl8jEaJPxM4UTmjDkK0rcXZ2Pw9027NGuDFPmoOZb-LMnwjojpAJt1pBvernj_fJHBkYzVOKFSTp_kCphhI7uHYUjfv_h9nkH93CGIfR2c3nV8cckzgBoa7QWXWDwFefZz6p102ifUlFDP-okMieLX6rQn5DK5sjUvHvqegcfZ-3cco9JkNiHEceO2qhE -->
+(function workerFn() {
+    var _this = this;
+
+    var interval = void 0;
+    this.onmessage = function (e) {
+        switch (e.data) {
+            case true:
+                if (!interval) {
+                    interval = setInterval(function () {
+                        _this.postMessage(true);
+                    }, 1000 / 30);
+                }
+                break;
+            case false:
+                if (interval) {
+                    clearInterval(interval);
+                    interval = 0;
+                }
+                break;
+            default:
+                _this.postMessage(e.data);
+                break;
+        }
+    };
+})()
